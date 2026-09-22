@@ -610,22 +610,6 @@ Cargando voces...
 
 </select>
 
-<br>
-
-<label>
-
-🎤 Voz JARVIS
-
-</label>
-
-<select id="voiceSelector">
-
-<option>
-Cargando voces...
-</option>
-
-</select>
-
 <div class="card">
 
 <h3>Respuesta</h3>
@@ -877,6 +861,18 @@ femaleSpanish;
 
 speechSynthesis.onvoiceschanged =
 loadVoices;
+
+window.addEventListener(
+"load",
+()=>{
+
+setTimeout(
+loadVoices,
+1500
+);
+
+}
+);
 
 setTimeout(
 loadVoices,
