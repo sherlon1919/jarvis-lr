@@ -139,6 +139,18 @@ Todos los sistemas operativos se encuentran operativos.
 ✅ Seguridad<br>
 🟡 Impresoras
 
+<div class="card">
+
+<h3>🤖 JARVIS GUIDE</h3>
+
+<p id="guideText">
+
+Seleccione un módulo para comenzar.
+
+</p>
+
+</div>
+  
 </div>
 
 <div class="card">
@@ -162,4 +174,200 @@ onclick="selectModule('EXEC')">
 📧 EXEC
 </div>
 
-<div class="
+  <div class="card" id="itPanel" style="display:none;">
+
+<h2>🔧 ALEX | JARVIS.IT</h2>
+
+<p>Centro de operaciones IT</p>
+
+<ul>
+<li>☁️ Microsoft 365</li>
+<li>🖨️ Impresoras</li>
+<li>🌐 Redes</li>
+<li>🖥️ Windows</li>
+<li>🔐 Seguridad</li>
+</ul>
+
+<button onclick="itAction('m365')">
+Microsoft 365
+</button>
+
+<button onclick="itAction('network')">
+Red
+</button>
+
+<button onclick="itAction('printer')">
+Impresoras
+</button>
+
+</div>
+
+  <div class="card" id="autoPanel" style="display:none;">
+
+<h2>🚗 MARCO | JARVIS.AUTO</h2>
+
+<p>Centro automotriz</p>
+
+<ul>
+<li>Toyota</li>
+<li>Ford</li>
+<li>Kia</li>
+<li>OBD2</li>
+<li>Recalls</li>
+</ul>
+
+<button onclick="autoAction('recall')">
+Buscar Recall
+</button>
+
+<button onclick="autoAction('camera')">
+Diagnosticar Cámara
+</button>
+
+<button onclick="autoAction('obd')">
+Código OBD2
+</button>
+
+</div>
+
+  <div class="card">
+
+<h3>🤖 JARVIS GUIDE</h3>
+
+<p id="guideText">
+Seleccione un módulo para comenzar.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Respuesta</h3>
+
+<div id="response">
+Esperando instrucciones...
+</div>
+
+</div>
+
+<script>
+
+function guide(text){
+
+document.getElementById(
+"guideText"
+).innerHTML=text;
+
+}
+
+function responseBox(message){
+
+document.getElementById(
+"response"
+).innerHTML=message;
+
+}
+
+function selectModule(module){
+
+const itPanel =
+document.getElementById("itPanel");
+
+const autoPanel =
+document.getElementById("autoPanel");
+
+if(itPanel)
+itPanel.style.display="none";
+
+if(autoPanel)
+autoPanel.style.display="none";
+
+if(module==="IT"){
+
+itPanel.style.display="block";
+
+guide(
+"ALEX listo para soporte IT."
+);
+
+}
+
+if(module==="AUTO"){
+
+autoPanel.style.display="block";
+
+guide(
+"MARCO listo para diagnóstico automotriz."
+);
+
+}
+
+responseBox(
+"✅ Módulo seleccionado: "
++ module
+);
+
+}
+
+function itAction(action){
+
+if(action==="m365"){
+
+responseBox(
+"☁️ Microsoft 365 operativo."
+);
+
+}
+
+if(action==="network"){
+
+responseBox(
+"🌐 Revisar DNS, DHCP y Gateway."
+);
+
+}
+
+if(action==="printer"){
+
+responseBox(
+"🖨️ Revisar IP, SNMP y modo suspensión."
+);
+
+}
+
+}
+
+function autoAction(action){
+
+if(action==="recall"){
+
+responseBox(
+"🚗 Validar VIN para recalls."
+);
+
+}
+
+if(action==="camera"){
+
+responseBox(
+"📷 Revisar configuración multimedia."
+);
+
+}
+
+if(action==="obd"){
+
+responseBox(
+"🔍 Introduzca código OBD2."
+);
+
+}
+
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
