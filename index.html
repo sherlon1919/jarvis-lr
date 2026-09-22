@@ -264,59 +264,196 @@ transform:translateY(-40px);
 <div class="card">
 <div class="avatar">
 
-<svg width="140" height="140" viewBox="0 0 200 200">
+<svg
+width="220"
+height="220"
+viewBox="0 0 400 400"
+xmlns="http://www.w3.org/2000/svg">
 
 <defs>
 
-<linearGradient id="jarvis"
-x1="0%" y1="0%"
-x2="100%" y2="100%">
-
-<stop offset="0%"
-stop-color="#00D4FF"/>
-
-<stop offset="100%"
-stop-color="#00FFFF"/>
-
+<linearGradient id="hudBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#00D4FF"/>
+<stop offset="100%" stop-color="#00FFFF"/>
 </linearGradient>
+
+<filter id="glow">
+<feGaussianBlur stdDeviation="4" result="blur"/>
+<feMerge>
+<feMergeNode in="blur"/>
+<feMergeNode in="SourceGraphic"/>
+</feMerge>
+</filter>
 
 </defs>
 
+<!-- Halo exterior -->
+
 <circle
-cx="100"
-cy="100"
-r="85"
-fill="#13243a"
-stroke="url(#jarvis)"
-stroke-width="4"/>
+cx="200"
+cy="200"
+r="145"
+fill="none"
+stroke="url(#hudBlue)"
+stroke-width="3"
+opacity=".5">
+
+<animateTransform
+attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="0 200 200"
+to="360 200 200"
+dur="18s"
+repeatCount="indefinite"/>
+
+</circle>
+
+<circle
+cx="200"
+cy="200"
+r="125"
+fill="none"
+stroke="#00FFFF"
+stroke-width="2"
+stroke-dasharray="10 8"
+opacity=".4">
+
+<animateTransform
+attributeName="transform"
+attributeType="XML"
+type="rotate"
+from="360 200 200"
+to="0 200 200"
+dur="12s"
+repeatCount="indefinite"/>
+
+</circle>
+
+<!-- Cabeza -->
+
+<path
+d="
+M130 120
+L270 120
+L305 165
+L295 255
+L255 295
+L145 295
+L105 255
+L95 165
+Z"
+fill="#0E1D31"
+stroke="url(#hudBlue)"
+stroke-width="4"
+filter="url(#glow)"
+/>
+
+<!-- Frente -->
+
+<path
+d="
+M165 130
+L235 130
+L220 165
+L180 165
+Z"
+fill="#00AFFF"
+opacity=".7"
+/>
+
+<!-- Ojos -->
 
 <rect
-x="50"
-y="55"
-width="100"
-height="75"
-rx="18"
-fill="#173554"/>
+x="130"
+y="175"
+width="55"
+height="20"
+rx="8"
+fill="#00FFFF"
+filter="url(#glow)"
+>
+<animate
+attributeName="opacity"
+values="1;.6;1"
+dur="2s"
+repeatCount="indefinite"/>
+</rect>
+
+<rect
+x="215"
+y="175"
+width="55"
+height="20"
+rx="8"
+fill="#00FFFF"
+filter="url(#glow)"
+>
+<animate
+attributeName="opacity"
+values="1;.6;1"
+dur="2s"
+repeatCount="indefinite"/>
+</rect>
+
+<!-- Núcleo -->
 
 <circle
-cx="78"
-cy="90"
-r="10"
+cx="200"
+cy="225"
+r="18"
+fill="#00FFFF"
+filter="url(#glow)">
+<animate
+attributeName="r"
+values="18;22;18"
+dur="1.8s"
+repeatCount="indefinite"/>
+</circle>
+
+<!-- Mandíbula -->
+
+<path
+d="
+M165 255
+L235 255
+L220 282
+L180 282
+Z"
+fill="#142E4A"
+stroke="#00D4FF"
+stroke-width="2"
+/>
+
+<!-- HUD -->
+
+<line
+x1="40"
+y1="200"
+x2="90"
+y2="200"
+stroke="#00FFFF"
+stroke-width="3"/>
+
+<line
+x1="310"
+y1="200"
+x2="360"
+y2="200"
+stroke="#00FFFF"
+stroke-width="3"/>
+
+<circle
+cx="40"
+cy="200"
+r="5"
 fill="#00FFFF"/>
 
 <circle
-cx="122"
-cy="90"
-r="10"
+cx="360"
+cy="200"
+r="5"
 fill="#00FFFF"/>
-
-<rect
-x="72"
-y="118"
-width="56"
-height="8"
-rx="4"
-fill="#00D4FF"/>
 
 </svg>
 
