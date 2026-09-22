@@ -878,8 +878,20 @@ femaleSpanish;
 speechSynthesis.onvoiceschanged =
 loadVoices;
 
-loadVoices();
+setTimeout(
+loadVoices,
+1000
+);
 
+setTimeout(
+loadVoices,
+2000
+);
+
+setTimeout(
+loadVoices,
+3000
+);
 /* CONTINUA TU SPEAK */
 
 function speak(text){
