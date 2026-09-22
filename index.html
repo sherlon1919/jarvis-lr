@@ -155,12 +155,103 @@ box-shadow:
 
 }
 
-</style>
+body::before{
 
+content:"";
+
+position:fixed;
+inset:0;
+
+background:
+
+radial-gradient(
+circle at 20% 20%,
+rgba(0,212,255,.15),
+transparent 25%
+),
+
+radial-gradient(
+circle at 80% 30%,
+rgba(0,255,255,.15),
+transparent 25%
+),
+
+radial-gradient(
+circle at 50% 90%,
+rgba(0,100,255,.20),
+transparent 30%
+);
+
+animation:jarvisMove
+20s infinite alternate;
+
+z-index:-1;
+
+pointer-events:none;
+
+}
+
+@keyframes jarvisMove{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-40px);
+}
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+inset:0;
+
+background:
+
+radial-gradient(
+circle at 20% 20%,
+rgba(0,212,255,.15),
+transparent 25%
+),
+
+radial-gradient(
+circle at 80% 30%,
+rgba(0,255,255,.15),
+transparent 25%
+),
+
+radial-gradient(
+circle at 50% 90%,
+rgba(0,100,255,.20),
+transparent 30%
+);
+
+animation:jarvisMove 20s infinite alternate;
+
+z-index:-1;
+
+pointer-events:none;
+
+}
+
+@keyframes jarvisMove{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-40px);
+}
+
+}
 
 </style>
 </head>
-
 <body>
 
 <header>
@@ -171,7 +262,65 @@ box-shadow:
 <div class="dashboard">
 
 <div class="card">
-<div class="avatar">🤖</div>
+<div class="avatar">
+
+<svg width="140" height="140" viewBox="0 0 200 200">
+
+<defs>
+
+<linearGradient id="jarvis"
+x1="0%" y1="0%"
+x2="100%" y2="100%">
+
+<stop offset="0%"
+stop-color="#00D4FF"/>
+
+<stop offset="100%"
+stop-color="#00FFFF"/>
+
+</linearGradient>
+
+</defs>
+
+<circle
+cx="100"
+cy="100"
+r="85"
+fill="#13243a"
+stroke="url(#jarvis)"
+stroke-width="4"/>
+
+<rect
+x="50"
+y="55"
+width="100"
+height="75"
+rx="18"
+fill="#173554"/>
+
+<circle
+cx="78"
+cy="90"
+r="10"
+fill="#00FFFF"/>
+
+<circle
+cx="122"
+cy="90"
+r="10"
+fill="#00FFFF"/>
+
+<rect
+x="72"
+y="118"
+width="56"
+height="8"
+rx="4"
+fill="#00D4FF"/>
+
+</svg>
+
+</div>
 
 <h2>JARVIS PRIME</h2>
 
@@ -267,6 +416,21 @@ Código OBD2
 
 </div>
 
+<div class="card" id="execPanel" style="display:none;">
+
+<h2>📧 DANIEL | JARVIS.EXEC</h2>
+
+<p>Asistente Ejecutivo</p>
+
+<ul>
+<li>📧 Correos</li>
+<li>🎫 Tickets</li>
+<li>📄 Informes</li>
+<li>📝 Documentación</li>
+</ul>
+
+</div>
+  
 <div class="card">
 
 <h3>🎙️ Voz</h3>
