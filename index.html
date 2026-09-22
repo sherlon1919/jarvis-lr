@@ -250,6 +250,24 @@ transform:translateY(-40px);
 
 }
 
+#voiceSelector{
+
+width:100%;
+
+padding:12px;
+
+margin-top:10px;
+
+background:#162941;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+}
+
 </style>
 </head>
 <body>
@@ -584,6 +602,30 @@ Micrófono inactivo
 
 </div>
 
+<select id="voiceSelector">
+
+<option>
+Cargando voces...
+</option>
+
+</select>
+
+<br>
+
+<label>
+
+🎤 Voz JARVIS
+
+</label>
+
+<select id="voiceSelector">
+
+<option>
+Cargando voces...
+</option>
+
+</select>
+
 <div class="card">
 
 <h3>Respuesta</h3>
@@ -772,6 +814,80 @@ responseBox(
 
 }
 
+};
+
+}
+
+/* PEGA AQUI */
+
+let availableVoices = [];
+
+function loadVoices(){
+
+availableVoices =
+speechSynthesis.getVoices();
+
+const selector =
+document.getElementById(
+"voiceSelector"
+);
+
+if(!selector)
+return;
+
+selector.innerHTML = "";
+
+availableVoices.forEach(
+(voice,index)=>{
+
+const option =
+document.createElement(
+"option"
+);
+
+option.value =
+index;
+
+option.textContent =
+voice.name +
+" (" +
+voice.lang +
+")";
+
+selector.appendChild(
+option);
+
+});
+
+const femaleSpanish =
+availableVoices.findIndex(v =>
+
+v.lang.startsWith("es")
+
+);
+
+if(femaleSpanish >= 0){
+
+selector.value =
+femaleSpanish;
+
+}
+
+}
+
+speechSynthesis.onvoiceschanged =
+loadVoices;
+
+loadVoices();
+
+/* CONTINUA TU SPEAK */
+
+function speak(text){
+
+speechSynthesis.cancel();
+
+...
+  
 function speak(text){
 
 speechSynthesis.cancel();
@@ -785,11 +901,22 @@ speech.rate = 1;
 
 speech.pitch = 1.1;
 
-const voices =
-speechSynthesis.getVoices();
+const selector =
+document.getElementById(
+"voiceSelector"
+);
 
-const femaleVoice =
-voices.find(v =>
+if(
+selector &&
+availableVoices.length
+){
+
+speech.voice =
+availableVoices[
+selector.value
+];
+
+}
 
 v.lang.startsWith("es") &&
 
