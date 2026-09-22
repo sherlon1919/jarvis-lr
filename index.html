@@ -265,8 +265,8 @@ transform:translateY(-40px);
 <div class="avatar">
 
 <svg
-width="220"
-height="220"
+<svg width="320"
+height="320"
 viewBox="0 0 400 400"
 xmlns="http://www.w3.org/2000/svg">
 
@@ -774,13 +774,43 @@ responseBox(
 
 function speak(text){
 
+speechSynthesis.cancel();
+
 const speech =
 new SpeechSynthesisUtterance(text);
 
 speech.lang = "es-ES";
 
 speech.rate = 1;
-speech.pitch = 1;
+
+speech.pitch = 1.1;
+
+const voices =
+speechSynthesis.getVoices();
+
+const femaleVoice =
+voices.find(v =>
+
+v.lang.startsWith("es") &&
+
+(
+
+v.name.includes("Maria") ||
+v.name.includes("Helena") ||
+v.name.includes("Laura") ||
+v.name.includes("Sabina") ||
+v.name.includes("Paulina")
+
+)
+
+);
+
+if(femaleVoice){
+
+speech.voice =
+femaleVoice;
+
+}
 
 speechSynthesis.speak(
 speech
@@ -792,6 +822,55 @@ function processCommand(command){
 
 const cmd =
 command.toLowerCase();
+
+if(
+cmd.includes("hola jarvis")
+){
+
+responseBox(
+"Buenas tardes Luis. ¿Cuál es la misión de hoy?"
+);
+
+speak(
+"Buenas tardes Luis. ¿Cuál es la misión de hoy?"
+);
+
+return;
+
+}
+
+if(
+cmd.includes("jarvis estas bien") ||
+cmd.includes("jarvis estás bien")
+){
+
+responseBox(
+"✅ Todos los sistemas operativos funcionan correctamente."
+);
+
+speak(
+"Todos los sistemas operativos funcionan correctamente."
+);
+
+return;
+
+}
+
+if(
+cmd.includes("estado")
+){
+
+responseBox(
+"✅ Microsoft 365 operativo. ✅ Red operativa. ✅ Seguridad operativa."
+);
+
+speak(
+"Todos los sistemas principales están operativos."
+);
+
+return;
+
+}
 
 if(cmd.includes("abre it")){
 
