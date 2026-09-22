@@ -107,6 +107,57 @@ border-radius:10px;
 cursor:pointer;
 }
 
+.action{
+width:100%;
+margin-top:10px;
+padding:12px;
+font-weight:bold;
+background:#00D4FF;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* NUEVO BLOQUE */
+
+#voiceButton{
+
+width:100%;
+padding:18px;
+font-size:18px;
+font-weight:bold;
+
+background:linear-gradient(
+90deg,
+#00D4FF,
+#00FFFF
+);
+
+border:none;
+border-radius:15px;
+
+cursor:pointer;
+color:black;
+
+box-shadow:
+0 0 15px rgba(0,212,255,.4);
+
+transition:.3s;
+
+}
+
+#voiceButton:hover{
+
+transform:scale(1.02);
+
+box-shadow:
+0 0 25px rgba(0,255,255,.7);
+
+}
+
+</style>
+
+
 </style>
 </head>
 
@@ -212,6 +263,18 @@ Diagnosticar Cámara
 
 <button onclick="autoAction('obd')">
 Código OBD2
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🎙️ Voz</h3>
+
+<button id="voiceButton">
+
+🎙️ Activar JARVIS
+
 </button>
 
 </div>
@@ -341,6 +404,16 @@ responseBox(
 
 }
 
+document
+.getElementById("voiceButton")
+.addEventListener("click",()=>{
+
+responseBox(
+"🎙️ JARVIS escuchando..."
+);
+
+});
+  
 </script>
 
 </div>
