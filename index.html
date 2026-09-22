@@ -578,6 +578,10 @@ Código OBD2
 
 </button>
 
+<div id="voiceStatus">
+
+Micrófono inactivo
+
 </div>
 
 <div class="card">
@@ -706,6 +710,7 @@ responseBox(
 }
 
 document
+document
 .getElementById("voiceButton")
 .addEventListener("click",()=>{
 
@@ -713,8 +718,168 @@ responseBox(
 "🎙️ JARVIS escuchando..."
 );
 
+document
+.getElementById(
+"voiceStatus"
+).innerHTML =
+"Escuchando...";
+
+if(recognition){
+
+recognition.start();
+
+}
+
 });
   
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+let recognition;
+
+if(SpeechRecognition){
+
+recognition =
+new SpeechRecognition();
+
+recognition.lang = "es-ES";
+
+recognition.continuous = false;
+
+recognition.interimResults = false;
+
+recognition.onresult = function(event){
+
+const text =
+event.results[0][0].transcript;
+
+responseBox(
+"🎙️ " + text
+);
+
+processCommand(text);
+
+};
+
+recognition.onerror = function(){
+
+responseBox(
+"No pude entender el comando."
+);
+
+};
+
+}
+
+function speak(text){
+
+const speech =
+new SpeechSynthesisUtterance(text);
+
+speech.lang = "es-ES";
+
+speech.rate = 1;
+speech.pitch = 1;
+
+speechSynthesis.speak(
+speech
+);
+
+}
+
+function processCommand(command){
+
+const cmd =
+command.toLowerCase();
+
+if(cmd.includes("abre it")){
+
+selectModule("IT");
+
+responseBox(
+"🔧 Alex activado."
+);
+
+speak(
+"Luis. Modulo IT activado."
+);
+
+}
+
+else if(
+cmd.includes("abre auto")
+){
+
+selectModule("AUTO");
+
+responseBox(
+"🚗 Marco activado."
+);
+
+speak(
+"Luis. Modulo automotriz activado."
+);
+
+}
+
+else if(
+cmd.includes("microsoft 365")
+){
+
+responseBox(
+"☁️ Microsoft 365 operativo."
+);
+
+speak(
+"Microsoft 365 operativo."
+);
+
+}
+
+else if(
+cmd.includes("impresora")
+){
+
+responseBox(
+"🖨️ Revisar DHCP y SNMP."
+);
+
+speak(
+"Diagnostico de impresora preparado."
+);
+
+}
+
+else if(
+cmd.includes("recall")
+){
+
+responseBox(
+"🚗 Validar VIN del vehiculo."
+);
+
+speak(
+"Validar VIN para recall."
+);
+
+}
+
+else{
+
+responseBox(
+"Comando recibido: " +
+command
+);
+
+speak(
+"Comando recibido."
+);
+
+}
+
+}
+
 </script>
 
 </div>
