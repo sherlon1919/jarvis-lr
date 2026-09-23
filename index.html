@@ -250,7 +250,21 @@ transform:translateY(-40px);
 
 }
 
-#voiceSelector{
+#voiceSelector{}
+
+#systemClock{
+margin-top:10px;
+font-size:22px;
+font-weight:bold;
+color:#00FFFF;
+text-shadow:0 0 10px #00FFFF;
+}
+
+#voiceStatus{
+margin-top:10px;
+font-weight:bold;
+color:#00FFFF;
+}
 
 width:100%;
 
@@ -275,6 +289,11 @@ border-radius:10px;
 <header>
 <h1>🤖 JARVIS-LR</h1>
 <p>Luis R. Meléndez</p>
+
+<div id="systemClock">
+00:00:00
+</div>
+
 </header>
 
 <div class="dashboard">
@@ -483,8 +502,13 @@ fill="#00FFFF"/>
 Buenas tardes Luis.<br>
 Todos los sistemas operativos se encuentran operativos.
 </p>
-</div>
 
+<div id="guideText">
+
+Sistema listo.
+
+</div>
+  
 <div class="card">
 
 <h3>Estado del Sistema</h3>
@@ -646,11 +670,17 @@ document.getElementById("itPanel");
 const autoPanel =
 document.getElementById("autoPanel");
 
+const execPanel =
+document.getElementById("execPanel");
+
 if(itPanel)
 itPanel.style.display="none";
 
 if(autoPanel)
 autoPanel.style.display="none";
+
+if(execPanel)
+execPanel.style.display="none";
 
 if(module==="IT"){
 
@@ -662,7 +692,17 @@ guide(
 
 }
 
-if(module==="AUTO"){
+if(module==="AUTO"){}
+
+if(module==="EXEC"){
+
+execPanel.style.display="block";
+
+guide(
+"DANIEL listo para tareas ejecutivas."
+);
+
+}
 
 autoPanel.style.display="block";
 
@@ -775,6 +815,17 @@ recognition.continuous = false;
 
 recognition.interimResults = false;
 
+recognition.onstart = function(){
+
+document
+.getElementById(
+"voiceStatus"
+).innerHTML =
+
+"🟢 Escuchando";
+
+};
+  
 recognition.onresult = function(event){
 
 const text =
@@ -789,6 +840,18 @@ processCommand(text);
 };
 
 recognition.onerror = function(){
+
+recognition.onend = function(){
+
+document
+.getElementById(
+"voiceStatus"
+).innerHTML =
+
+"🔵 En espera";
+
+};
+``
 
 responseBox(
 "No pude entender el comando."
@@ -1003,6 +1066,23 @@ return;
 
 if(cmd.includes("abre it")){
 
+else if(
+cmd.includes("abre exec")
+){
+
+selectModule("EXEC");
+
+responseBox(
+"📧 Daniel activado."
+);
+
+speak(
+"Modulo ejecutivo activado."
+);
+
+}
+
+
 selectModule("IT");
 
 responseBox(
@@ -1087,6 +1167,23 @@ speak(
 }
 
 }
+
+setInterval(()=>{
+
+const clock =
+document.getElementById(
+"systemClock"
+);
+
+if(clock){
+
+clock.innerHTML =
+new Date()
+.toLocaleTimeString();
+
+}
+
+},1000);
 
 </script>
 
