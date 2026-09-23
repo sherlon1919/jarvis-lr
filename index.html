@@ -1,1 +1,338 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JARVIS-LR v1.1</title><style>body{background:#050b15;color:#fff;font-family:Segoe UI;margin:0}header{text-align:center;padding:20px;border-bottom:1px solid #00d4ff}#clock{color:#00ffff;font-size:22px}.card{background:#121f31;margin:15px;padding:15px;border-radius:15px}.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.module{background:#1a2a40;padding:15px;border-radius:10px;cursor:pointer;text-align:center}button{padding:12px;border:none;border-radius:10px;background:#00d4ff}#response{min-height:100px}</style></head><body><header><h1>🤖 JARVIS-LR</h1><div id="clock"></div></header><div class="card"><h2>JARVIS PRIME</h2><p>Buenas tardes Luis.<br>Análisis finalizado.<br>Infraestructura, comunicaciones y servicios operando con normalidad.<br>Todos los sistemas están listos para operar.</p></div><div class="card"><div class="modules"><div class="module" onclick="selectModule('IT')">🔧 IT</div><div class="module" onclick="selectModule('AUTO')">🚗 AUTO</div><div class="module" onclick="selectModule('EXEC')">📧 EXEC</div></div></div><div class="card"><button id="voiceButton">🎙️ Activar JARVIS</button><div id="voiceStatus">En espera</div><select id="voiceSelector"></select></div><div class="card"><div id="response">Esperando instrucciones...</div></div><script>let availableVoices=[];function loadVoices(){availableVoices=speechSynthesis.getVoices();let s=document.getElementById('voiceSelector');s.innerHTML='';availableVoices.forEach((v,i)=>{let o=document.createElement('option');o.value=i;o.textContent=v.name+' - '+v.lang;s.appendChild(o)});let e=availableVoices.findIndex(v=>v.name.includes('Google español'));if(e>=0)s.value=e;}speechSynthesis.onvoiceschanged=loadVoices;function speak(t){let u=new SpeechSynthesisUtterance(t);u.lang='es-ES';let v=availableVoices.find(x=>x.name.includes('Google español'));if(v)u.voice=v;speechSynthesis.speak(u);}function selectModule(m){document.getElementById('response').innerHTML='✅ Módulo seleccionado: '+m;speak('Módulo '+m+' activado');}const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let r;if(SR){r=new SR();r.lang='es-ES';r.onstart=()=>voiceStatus.innerHTML='🟢 Escuchando';r.onend=()=>voiceStatus.innerHTML='🔵 En espera';r.onresult=e=>processCommand(e.results[0][0].transcript);}voiceButton.onclick=()=>{if(r)r.start();};function processCommand(c){c=c.toLowerCase();if(c.includes('hola jarvis')){let m='Buenas tardes Luis. Análisis finalizado. Infraestructura, comunicaciones y servicios operando con normalidad. Todos los sistemas están listos para operar.';response.innerHTML=m;speak(m);}}setInterval(()=>clock.innerHTML=new Date().toLocaleTimeString(),1000);loadVoices();</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JARVIS-LR</title>
+
+<style>
+
+:root{
+--bg:#050b15;
+--panel:#0e1828;
+--panel2:#13243b;
+--cyan:#00e5ff;
+--blue:#00aaff;
+--text:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+
+background:
+radial-gradient(circle at 20% 20%,rgba(0,229,255,.15),transparent 25%),
+radial-gradient(circle at 80% 30%,rgba(0,170,255,.15),transparent 25%),
+radial-gradient(circle at 50% 90%,rgba(0,229,255,.15),transparent 30%);
+
+z-index:-1;
+}
+
+header{
+
+padding:20px;
+text-align:center;
+border-bottom:1px solid var(--cyan);
+background:#07111f;
+
+}
+
+.logo{
+width:180px;
+height:180px;
+margin:auto;
+}
+
+.logo svg{
+width:100%;
+height:100%;
+}
+
+.rotate{
+animation:spin 15s linear infinite;
+transform-origin:center;
+}
+
+.rotate2{
+animation:spin2 10s linear infinite;
+transform-origin:center;
+}
+
+@keyframes spin{
+
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+
+}
+
+@keyframes spin2{
+
+from{transform:rotate(360deg);}
+to{transform:rotate(0deg);}
+
+}
+
+h1{
+font-size:42px;
+color:var(--cyan);
+}
+
+.subtitle{
+color:#9ddcff;
+}
+
+#clock{
+margin-top:10px;
+font-size:26px;
+color:var(--cyan);
+}
+
+.container{
+padding:20px;
+max-width:1400px;
+margin:auto;
+}
+
+.card{
+
+background:var(--panel);
+border-radius:15px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 0 20px rgba(0,229,255,.15);
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+
+}
+
+.module{
+
+background:var(--panel2);
+padding:20px;
+border-radius:12px;
+cursor:pointer;
+text-align:center;
+font-weight:bold;
+transition:.3s;
+
+}
+
+.module:hover{
+
+background:var(--cyan);
+color:black;
+transform:translateY(-3px);
+
+}
+
+#voiceButton{
+
+width:100%;
+padding:15px;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:linear-gradient(90deg,var(--blue),var(--cyan));
+
+}
+
+#response{
+
+min-height:180px;
+margin-top:15px;
+
+}
+
+.assistant{
+
+display:flex;
+align-items:center;
+gap:20px;
+
+}
+
+.core{
+
+width:120px;
+height:120px;
+border-radius:50%;
+border:3px solid var(--cyan);
+box-shadow:0 0 30px var(--cyan);
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+
+}
+
+select{
+
+width:100%;
+padding:10px;
+margin-top:10px;
+
+}
+
+textarea{
+
+width:100%;
+height:120px;
+background:#0b1524;
+color:white;
+border:none;
+padding:10px;
+border-radius:10px;
+
+}
+
+button.action{
+
+margin-top:10px;
+padding:10px 20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<svg viewBox="0 0 300 300">
+
+<circle
+cx="150"
+cy="150"
+r="120"
+fill="none"
+stroke="#00E5FF"
+stroke-width="3"
+class="rotate"/>
+
+<circle
+cx="150"
+cy="150"
+r="90"
+fill="none"
+stroke="#00AAFF"
+stroke-width="2"
+stroke-dasharray="10 10"
+class="rotate2"/>
+
+<circle
+cx="150"
+cy="150"
+r="40"
+fill="#00E5FF"/>
+
+<circle
+cx="150"
+cy="150"
+r="20"
+fill="#ffffff"/>
+
+</svg>
+
+</div>
+
+<h1>JARVIS-LR</h1>
+
+<div class="subtitle">
+
+Enterprise IT Assistant
+
+</div>
+
+<div id="clock"></div>
+
+</header>
+
+<div class="container">
+
+<div class="card assistant">
+
+<div class="core"></div>
+
+<div>
+
+<h2>JARVIS PRIME</h2>
+
+<p>
+
+Buenas tardes Luis.<br><br>
+
+Análisis finalizado.<br><br>
+
+Infraestructura, comunicaciones y servicios operando con normalidad.<br><br>
+
+Todos los sistemas están listos para operar.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Módulos</h2>
+
+<div class="grid">
+
+<div class="module">🔧 IT Operations</div>
+
+<div class="module">🔒 Security Center</div>
+
+<div class="module">☁ Microsoft 365</div>
+
+<div class="module">📊 Analyst Center</div>
+
+<div class="module">🔬 Research Center</div>
+
+<div class="module">⚙ Automation Center</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Control de Voz</h2>
+
+<button id="voiceButton">
+
+🎙 Activar JARVIS
