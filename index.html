@@ -872,40 +872,56 @@ let availableVoices = [];
 
 function loadVoices(){
 
-availableVoices =
-speechSynthesis.getVoices();
+    availableVoices =
+    speechSynthesis.getVoices();
 
-const selector =
-document.getElementById(
-"voiceSelector"
-);
+    console.log(
+        "VOCES:",
+        availableVoices
+    );
 
-if(!selector)
-return;
+    const selector =
+    document.getElementById(
+        "voiceSelector"
+    );
 
-selector.innerHTML = "";
+    if(!selector) return;
 
-availableVoices.forEach(
-(voice,index)=>{
+    selector.innerHTML = "";
 
-const option =
-document.createElement(
-"option"
-);
+    if(
+        availableVoices.length === 0
+    ){
 
-option.value =
-index;
+        selector.innerHTML =
+        "<option>Sin voces detectadas</option>";
 
-option.textContent =
-voice.name +
-" (" +
-voice.lang +
-")";
+        return;
 
-selector.appendChild(
-option);
+    }
 
-});
+    availableVoices.forEach(
+    (voice,index)=>{
+
+        const option =
+        document.createElement(
+            "option"
+        );
+
+        option.value = index;
+
+        option.textContent =
+        voice.name +
+        " - " +
+        voice.lang;
+
+        selector.appendChild(
+            option
+        );
+
+    });
+
+}
 
 const femaleSpanish =
 availableVoices.findIndex(v =>
@@ -956,47 +972,37 @@ loadVoices,
 
 function speak(text){
 
-speechSynthesis.cancel();
+    speechSynthesis.cancel();
 
-const speech =
-new SpeechSynthesisUtterance(text);
+    const speech =
+    new SpeechSynthesisUtterance(text);
 
-speech.lang = "es-ES";
+    speech.lang = "es-ES";
+    speech.rate = 1;
+    speech.pitch = 1;
 
-speech.rate = 1;
+    const selector =
+    document.getElementById(
+        "voiceSelector"
+    );
 
-speech.pitch = 1.1;
+    if(
+        selector &&
+        availableVoices.length > 0
+    ){
 
-const selector =
-document.getElementById(
-"voiceSelector"
-);
+        speech.voice =
+        availableVoices[
+            Number(selector.value)
+        ];
 
-if(
-selector &&
-availableVoices.length
-){
+    }
 
-speech.voice =
-availableVoices[
-selector.value
-];
+    speechSynthesis.speak(
+        speech
+    );
 
 }
-
-v.lang.startsWith("es") &&
-
-(
-
-v.name.includes("Maria") ||
-v.name.includes("Helena") ||
-v.name.includes("Laura") ||
-v.name.includes("Sabina") ||
-v.name.includes("Paulina")
-
-)
-
-);
 
 if(femaleVoice){
 
@@ -1185,6 +1191,22 @@ new Date()
 }
 
 },1000);
+
+window.onload = function(){
+
+    loadVoices();
+
+    setTimeout(
+        loadVoices,
+        1000
+    );
+
+    setTimeout(
+        loadVoices,
+        3000
+    );
+
+};
 
 </script>
 
