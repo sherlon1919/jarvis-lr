@@ -1,2 +1,1 @@
-# jarvis-lr
-JARVIS-LR Personal Assistant
+# JARVIS-LR v1.1 Stable
