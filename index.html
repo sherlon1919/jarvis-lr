@@ -978,6 +978,8 @@ function speak(text){
     new SpeechSynthesisUtterance(text);
 
     speech.lang = "es-ES";
+    speech.voice =
+    speechSynthesis.getVoices()[7];
     speech.rate = 1;
     speech.pitch = 1;
 
