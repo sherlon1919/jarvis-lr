@@ -590,6 +590,8 @@ updateClock();
 
 function openResearchCenter(){
 
+hideAllPanels();
+
     document.getElementById(
         "researchPanel"
     ).style.display = "block";
@@ -605,6 +607,8 @@ function openResearchCenter(){
 
 function openAnalystCenter(){
 
+hideAllPanels();
+
     document.getElementById(
         "analystPanel"
     ).style.display = "block";
@@ -619,6 +623,8 @@ function openAnalystCenter(){
 }
 
 function openITOperations(){
+
+hideAllPanels();
 
     document.getElementById(
         "itOperationsPanel"
@@ -843,7 +849,21 @@ else{
 
 }
 
+function hideAllPanels(){
+
+    document.getElementById("securityPanel").style.display = "none";
+
+    document.getElementById("researchPanel").style.display = "none";
+
+    document.getElementById("analystPanel").style.display = "none";
+
+    document.getElementById("itOperationsPanel").style.display = "none";
+
+}
+    
 function openSecurityCenter(){
+
+hideAllPanels();
 
     document.getElementById("securityPanel").style.display = "block";
 
