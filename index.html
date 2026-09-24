@@ -363,7 +363,9 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 <div class="grid">
 
-<div class="module">🔧 IT Operations</div>
+<div class="module" onclick="openITOperations()">
+🔧 IT Operations
+</div>
 
 <div class="module" onclick="openSecurityCenter()">
 🔒 Security Center
@@ -476,6 +478,26 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 <p><b>Responsable:</b></p>
 <p>JARVIS-LR IT Operations</p>
+
+</div>
+
+<div id="itOperationsPanel" class="card" style="display:none;">
+
+<h2>🔧 IT Operations</h2>
+
+<p><b>Windows Servers:</b> Operativos</p>
+
+<p><b>Linux Servers:</b> Operativos</p>
+
+<p><b>Networking:</b> Operativo</p>
+
+<p><b>Storage:</b> Operativo</p>
+
+<p><b>Backups:</b> Completados</p>
+
+<p><b>Impresoras:</b> Disponibles</p>
+
+<p><b>Estado General:</b> Infraestructura estable</p>
 
 </div>
 
@@ -592,6 +614,21 @@ function openAnalystCenter(){
 
     speak(
     "Analyst Center cargado correctamente."
+    );
+
+}
+
+function openITOperations(){
+
+    document.getElementById(
+        "itOperationsPanel"
+    ).style.display = "block";
+
+    responseDiv.innerHTML =
+    "IT Operations cargado.";
+
+    speak(
+    "IT Operations cargado correctamente."
     );
 
 }
@@ -750,6 +787,26 @@ else if(command.includes("reporte")){
 
     speak(
     "Generando resumen ejecutivo."
+    );
+
+}
+
+else if(command.includes("servidores")){
+
+    openITOperations();
+
+    speak(
+    "Servidores operativos y dentro de parámetros normales."
+    );
+
+}
+
+else if(command.includes("operaciones")){
+
+    openITOperations();
+
+    speak(
+    "Mostrando estado operacional de la infraestructura."
     );
 
 }
