@@ -950,7 +950,9 @@ getGreeting() +
 
 " Luis. Análisis completado. Todos los sistemas se encuentran óptimos y plenamente funcionales."
 
-    recognition.onend = function(){
+           );
+
+ recognition.onend = function(){
 
     if(vigilanciaActiva){
 
@@ -963,8 +965,7 @@ getGreeting() +
     }
 
 };
-            );
-
+            
         }
 
         else if(command.includes("estado")){
