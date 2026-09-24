@@ -633,6 +633,18 @@ function loadVoices() {
 
 }
 
+const savedVoice =
+localStorage.getItem(
+    "jarvisVoice"
+);
+
+if(savedVoice){
+
+    voiceSelect.value =
+    savedVoice;
+
+}
+
 speechSynthesis.onvoiceschanged = loadVoices;
 loadVoices();
 
@@ -651,6 +663,18 @@ function getGreeting(){
     return "Buenas noches";
 
 }
+
+voiceSelect.addEventListener(
+    "change",
+    function(){
+
+        localStorage.setItem(
+            "jarvisVoice",
+            voiceSelect.value
+        );
+
+    }
+);
 
 function updateClock(){
 
