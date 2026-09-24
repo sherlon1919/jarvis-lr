@@ -409,6 +409,23 @@ function getGreeting(){
     return "Buenas noches";
 
 }
+
+function updateClock(){
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString(
+        "es-PR"
+    );
+
+    document.getElementById("clock").innerHTML =
+        time;
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
   
   function speak(text){
 
@@ -477,8 +494,9 @@ if(SpeechRecognition){
         if(command.includes("hola jarvis")){
 
             speak(
-            getGreeting() +
-" Luis. Todos los sistemas se encuentran óptimos y plenamente funcionales."
+getGreeting() +
+
+" Luis. Análisis completado. Todos los sistemas se encuentran óptimos y plenamente funcionales."
             );
 
         }
