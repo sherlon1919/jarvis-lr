@@ -951,21 +951,7 @@ getGreeting() +
 " Luis. Análisis completado. Todos los sistemas se encuentran óptimos y plenamente funcionales."
 
            );
-
- recognition.onend = function(){
-
-    if(vigilanciaActiva){
-
-        setTimeout(function(){
-
-            recognition.start();
-
-        },1000);
-
-    }
-
-};
-            
+           
         }
 
         else if(command.includes("estado")){
@@ -975,6 +961,20 @@ getGreeting() +
             );
 
         }
+
+        recognition.onend = function(){
+ 
+if(vigilanciaActiva){
+ 
+setTimeout(function(){
+ 
+recognition.start();
+ 
+},1000);
+ 
+}
+ 
+};
 
         else if(command.includes("seguridad")){
 
