@@ -962,21 +962,7 @@ getGreeting() +
 
         }
 
-        recognition.onend = function(){
- 
-if(vigilanciaActiva){
- 
-setTimeout(function(){
- 
-recognition.start();
- 
-},1000);
- 
-}
- 
-};
-
-        else if(command.includes("seguridad")){
+          else if(command.includes("seguridad")){
 
             speak(
             "No se detectan incidentes críticos de seguridad."
@@ -1227,6 +1213,24 @@ else{
 
     };
 
+}
+
+};
+ 
+recognition.onend = function(){
+ 
+if(vigilanciaActiva){
+ 
+setTimeout(function(){
+ 
+recognition.start();
+ 
+},1000);
+ 
+}
+ 
+};
+ 
 }
 
 function hideAllPanels(){
