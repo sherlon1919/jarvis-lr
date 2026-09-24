@@ -393,19 +393,31 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 <h2>📊 Analyst Center</h2>
 
 <p><b>Hallazgos:</b></p>
-<p>Sin información disponible.</p>
+<ul>
+    <li>Sistemas operativos.</li>
+    <li>Servicios críticos disponibles.</li>
+    <li>Comunicaciones operativas.</li>
+</ul>
 
 <p><b>Riesgos:</b></p>
-<p>Sin riesgos identificados.</p>
+<ul>
+    <li>No se detectan riesgos críticos.</li>
+</ul>
 
 <p><b>Impacto:</b></p>
-<p>No determinado.</p>
+<ul>
+    <li>Operación normal.</li>
+</ul>
 
-<p><b>Próximos Pasos:</b></p>
-<p>Pendiente de análisis.</p>
+<p><b>Próximos pasos:</b></p>
+<ul>
+    <li>Continuar monitoreo.</li>
+    <li>Validar alertas de seguridad.</li>
+    <li>Revisar disponibilidad de servicios.</li>
+</ul>
 
-<p><b>Responsables:</b></p>
-<p>Por asignar.</p>
+<p><b>Responsable:</b></p>
+<p>JARVIS-LR IT Operations</p>
 
 </div>
 
@@ -655,6 +667,26 @@ else if(command.includes("investigar")){
 
     speak(
     "Research Center preparado para análisis."
+    );
+
+}
+
+else if(command.includes("analista")){
+
+    openAnalystCenter();
+
+    speak(
+    "Analyst Center preparado para análisis."
+    );
+
+}
+
+else if(command.includes("reporte")){
+
+    openAnalystCenter();
+
+    speak(
+    "Generando resumen ejecutivo."
     );
 
 }
