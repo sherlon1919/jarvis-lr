@@ -386,7 +386,9 @@ onclick="openMicrosoft365Center()">
 🔬 Research Center
 </div>
   
-<div class="module">⚙ Automation Center</div>
+<div class="module" onclick="openAutomationCenter()">
+⚙ Automation Center
+</div>
 
 </div>
 
@@ -533,6 +535,54 @@ Cerrar Panel
 <p><b>Impresoras:</b> Disponibles</p>
 
 <p><b>Estado General:</b> Infraestructura estable</p>
+
+</div>
+
+<div id="m365Panel" class="card" style="display:none;">
+
+<h2>☁ Microsoft 365 Center</h2>
+
+<button class="action" onclick="hideAllPanels()">
+Cerrar Panel
+</button>
+
+<p><b>Exchange Online:</b> Operativo</p>
+
+<p><b>SharePoint:</b> Operativo</p>
+
+<p><b>OneDrive:</b> Operativo</p>
+
+<p><b>Microsoft Teams:</b> Operativo</p>
+
+<p><b>Power Platform:</b> Operativo</p>
+
+<p><b>Entra ID:</b> Operativo</p>
+
+<p><b>Estado General:</b> Todos los servicios disponibles.</p>
+
+</div>
+
+<div id="automationPanel" class="card" style="display:none;">
+
+<h2>⚙ Automation Center</h2>
+
+<button class="action" onclick="hideAllPanels()">
+Cerrar Panel
+</button>
+
+<p>📜 Crear Usuario</p>
+
+<p>🔑 Restablecer Contraseña</p>
+
+<p>🎟 Asignar Licencia</p>
+
+<p>👥 Crear Grupo</p>
+
+<p>💬 Crear Team</p>
+
+<p>📧 Crear Buzón Compartido</p>
+
+<p>☁ Aprovisionar OneDrive</p>
 
 </div>
 
@@ -747,6 +797,40 @@ hideAllPanels();
 
     speak(
     "IT Operations cargado correctamente."
+    );
+
+}
+
+function openMicrosoft365Center(){
+
+    hideAllPanels();
+
+    document.getElementById(
+        "m365Panel"
+    ).style.display = "block";
+
+    responseDiv.innerHTML =
+    "Microsoft 365 Center cargado.";
+
+    speak(
+    "Microsoft 365 Center cargado correctamente."
+    );
+
+}
+
+function openAutomationCenter(){
+
+    hideAllPanels();
+
+    document.getElementById(
+        "automationPanel"
+    ).style.display = "block";
+
+    responseDiv.innerHTML =
+    "Automation Center cargado.";
+
+    speak(
+    "Automation Center cargado correctamente."
     );
 
 }
@@ -970,6 +1054,10 @@ function hideAllPanels(){
     document.getElementById("analystPanel").style.display = "none";
 
     document.getElementById("itOperationsPanel").style.display = "none";
+
+    document.getElementById("m365Panel").style.display = "none";
+
+    document.getElementById("automationPanel").style.display = "none";
 
 }
     
