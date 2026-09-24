@@ -460,6 +460,15 @@ updateClock();
         utterance.voice = voices[voiceSelect.value];
     }
 
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+
+    responseDiv.innerHTML = text;
+
+}
+
 function openResearchCenter(){
 
     document.getElementById(
@@ -474,29 +483,7 @@ function openResearchCenter(){
     );
 
 }
-
-    document.getElementById(
-        "securityPanel"
-    ).style.display = "block";
-
-    responseDiv.innerHTML =
-    "Security Center cargado.";
-
-    speak(
-    "Security Center cargado correctamente."
-    );
-
-}
-
-    utterance.rate = 1;
-    utterance.pitch = 1;
-
-    speechSynthesis.speak(utterance);
-
-    responseDiv.innerHTML = text;
-
-}
-
+  
 const SpeechRecognition =
 window.SpeechRecognition ||
 window.webkitSpeechRecognition;
