@@ -410,13 +410,95 @@ function speak(text){
 
 }
 
-voiceButton.addEventListener("click", function(){
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
 
-    speak(
-        "Buenas tardes Luis. Todos los sistemas se encuentran óptimos y plenamente funcionales."
-    );
+if(SpeechRecognition){
 
-});
+    const recognition =
+    new SpeechRecognition();
+
+    recognition.lang = "es-ES";
+
+    recognition.start;
+
+    voiceButton.addEventListener("click", function(){
+
+        responseDiv.innerHTML =
+        "🎤 Escuchando...";
+
+        recognition.start();
+
+    });
+
+    recognition.onresult = function(event){
+
+        const command =
+        event.results[0][0].transcript.toLowerCase();
+
+        responseDiv.innerHTML =
+        "Comando detectado: " + command;
+
+        if(command.includes("hola jarvis")){
+
+            speak(
+            "Buenas tardes Luis. Todos los sistemas se encuentran óptimos y plenamente funcionales."
+            );
+
+        }
+
+        else if(command.includes("estado")){
+
+            speak(
+            "Infraestructura, comunicaciones y servicios operando con normalidad."
+            );
+
+        }
+
+        else if(command.includes("seguridad")){
+
+            speak(
+            "No se detectan incidentes críticos de seguridad."
+            );
+
+        }
+
+        else if(command.includes("microsoft 365")){
+
+            speak(
+            "Microsoft tres sesenta y cinco se encuentra operativo."
+            );
+
+        }
+
+        else if(command.includes("teams")){
+
+            speak(
+            "Microsoft Teams funcionando correctamente."
+            );
+
+        }
+
+        else if(command.includes("azure")){
+
+            speak(
+            "Servicios Azure disponibles."
+            );
+
+        }
+
+        else{
+
+            speak(
+            "Comando reconocido. Módulo en desarrollo."
+            );
+
+        }
+
+    };
+
+}
 
 </script>
 </body>
