@@ -185,6 +185,22 @@ color:#00e5ff;
 
 }
 
+#primeStatus{
+
+padding:15px;
+
+border:1px solid #00e5ff;
+
+border-radius:12px;
+
+background:#08111d;
+
+line-height:1.8;
+
+box-shadow:0 0 15px rgba(0,229,255,.25);
+
+}
+
 .assistant{
 
 display:flex;
@@ -329,17 +345,11 @@ Enterprise IT Assistant
 
 <h2>JARVIS PRIME</h2>
 
-<p>
+<div id="primeStatus">
 
-Buenas tardes Luis.<br><br>
+Inicializando sistema...
 
-Análisis finalizado.<br><br>
-
-Infraestructura, comunicaciones y servicios operando con normalidad.
-
-Estado general: sistemas operativos, servicios críticos y recursos tecnológicos funcionando dentro de parámetros normales.
-
-</p>
+</div>
 
 </div>
 
@@ -632,6 +642,43 @@ function updateClock(){
 setInterval(updateClock,1000);
 
 updateClock();
+
+function updatePrimeStatus(){
+
+    document.getElementById(
+        "primeStatus"
+    ).innerHTML =
+
+    getGreeting() +
+
+    " Luis.<br><br>" +
+
+    "Hora Actual: " +
+
+    new Date().toLocaleTimeString("es-PR")
+
+    +
+
+    "<br><br>Microsoft 365: ONLINE" +
+
+    "<br>Seguridad: PROTECTED" +
+
+    "<br>Infraestructura: ESTABLE" +
+
+    "<br>Research: ACTIVE" +
+
+    "<br>Servicios Monitoreados: 6" +
+
+    "<br><br>Análisis completado.";
+
+}
+
+updatePrimeStatus();
+
+setInterval(
+    updatePrimeStatus,
+    1000
+);
   
   function speak(text){
 
@@ -850,14 +897,6 @@ else if(command.includes("entra")){
 
     speak(
     "Microsoft Entra ID funcionando correctamente."
-    );
-
-}
-
-else if(command.includes("servidores")){
-
-    speak(
-    "Los servidores monitoreados reportan estado saludable."
     );
 
 }
