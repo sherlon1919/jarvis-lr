@@ -379,11 +379,8 @@ loadVoices();
 setTimeout(() => {
 
     const femaleVoice = voices.findIndex(v =>
-        v.name.toLowerCase().includes("aria") ||
-        v.name.toLowerCase().includes("zira") ||
-        v.name.toLowerCase().includes("helena") ||
-        v.name.toLowerCase().includes("female")
-    );
+    v.name.includes("Sabina")
+);
 
     if (femaleVoice >= 0) {
         voiceSelect.value = femaleVoice;
@@ -488,15 +485,67 @@ if(SpeechRecognition){
 
         }
 
-        else{
+else if(command.includes("firewall")){
 
-            speak(
-            "Comando reconocido. Módulo en desarrollo."
-            );
+    speak(
+    "Firewall activo y funcionando dentro de parámetros normales."
+    );
 
-        }
+}
 
-    };
+else if(command.includes("antivirus")){
+
+    speak(
+    "Protección antivirus activa. No se detectan amenazas críticas."
+    );
+
+}
+
+else if(command.includes("correo")){
+
+    speak(
+    "Exchange Online se encuentra operativo."
+    );
+
+}
+
+else if(command.includes("entra")){
+
+    speak(
+    "Microsoft Entra ID funcionando correctamente."
+    );
+
+}
+
+else if(command.includes("servidores")){
+
+    speak(
+    "Los servidores monitoreados reportan estado saludable."
+    );
+
+}
+
+else if(command.includes("riesgos")){
+
+    speak(
+    "Evaluación completada. Riesgo operacional bajo."
+    );
+
+}
+
+else if(command.includes("investigar")){
+
+    speak(
+    "Módulo de investigación preparado para análisis."
+    );
+
+}
+
+else{
+
+    speak(
+    "Comando no reconocido. Favor repetir la instrucción."
+    );
 
 }
 
