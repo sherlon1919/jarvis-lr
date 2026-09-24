@@ -371,7 +371,12 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 🔒 Security Center
 </div>
   
-<div class="module">☁ Microsoft 365</div>
+<div class="module"
+onclick="openMicrosoft365Center()">
+
+☁ Microsoft 365
+
+</div>
 
 <div class="module" onclick="openAnalystCenter()">
 📊 Analyst Center
@@ -416,6 +421,13 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 <h2>🔒 Security Center</h2>
 
+<button class="action"
+onclick="hideAllPanels()">
+
+Cerrar Panel
+
+</button>
+
 <p><b>Nivel de Riesgo:</b> Bajo</p>
 
 <p><b>Firewall:</b> Operativo</p>
@@ -431,6 +443,13 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 <div id="researchPanel" class="card" style="display:none;">
 
 <h2>🔬 Research Center</h2>
+
+<button class="action"
+onclick="hideAllPanels()">
+
+Cerrar Panel
+
+</button>
 
 <p>☁ Microsoft 365</p>
 
@@ -451,6 +470,13 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 <div id="analystPanel" class="card" style="display:none;">
 
 <h2>📊 Analyst Center</h2>
+
+<button class="action"
+onclick="hideAllPanels()">
+
+Cerrar Panel
+
+</button>
 
 <p><b>Hallazgos:</b></p>
 <ul>
@@ -485,6 +511,13 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 <h2>🔧 IT Operations</h2>
 
+<button class="action"
+onclick="hideAllPanels()">
+
+Cerrar Panel
+
+</button>
+
 <p><b>Windows Servers:</b> Operativos</p>
 
 <p><b>Linux Servers:</b> Operativos</p>
@@ -500,6 +533,83 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 <p><b>Estado General:</b> Infraestructura estable</p>
 
 </div>
+
+<div id="m365Panel" class="card" style="display:none;">
+
+<h2>☁ Microsoft 365 Center</h2>
+
+<button class="action" onclick="hideAllPanels()">
+Cerrar Panel
+</button>
+
+<p><b>Exchange Online:</b> Operativo</p>
+
+<p><b>SharePoint:</b> Operativo</p>
+
+<p><b>OneDrive:</b> Operativo</p>
+
+<p><b>Microsoft Teams:</b> Operativo</p>
+
+<p><b>Power Platform:</b> Operativo</p>
+
+<p><b>Entra ID:</b> Operativo</p>
+
+<p><b>Estado General:</b> Todos los servicios disponibles.</p>
+
+</div>
+
+<div id="automationPanel" class="card" style="display:none;">
+
+<h2>⚙ Automation Center</h2>
+
+<button class="action" onclick="hideAllPanels()">
+Cerrar Panel
+</button>
+
+<p>📜 Crear Usuario</p>
+
+<p>🔑 Restablecer Contraseña</p>
+
+<p>🎟 Asignar Licencia</p>
+
+<p>👥 Crear Grupo</p>
+
+<p>💬 Crear Team</p>
+
+<p>📧 Crear Buzón Compartido</p>
+
+<p>☁ Aprovisionar OneDrive</p>
+
+</div>
+
+
+<div id="m365Panel" class="card" style="display:none;">
+
+<h2>☁ Microsoft 365 Center</h2>
+
+<button class="action"
+onclick="hideAllPanels()">
+
+Cerrar Panel
+
+</button>
+
+<p><b>Exchange Online:</b> Operativo</p>
+
+<p><b>SharePoint:</b> Operativo</p>
+
+<p><b>OneDrive:</b> Operativo</p>
+
+<p><b>Microsoft Teams:</b> Operativo</p>
+
+<p><b>Power Platform:</b> Operativo</p>
+
+<p><b>Entra ID:</b> Operativo</p>
+
+<p><b>Estado General:</b> Todos los servicios disponibles.</p>
+
+</div>
+
 
 <script>
 
