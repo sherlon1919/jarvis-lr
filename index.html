@@ -394,7 +394,23 @@ function loadVoices() {
 speechSynthesis.onvoiceschanged = loadVoices;
 loadVoices();
 
-function speak(text){
+function getGreeting(){
+
+    const hour = new Date().getHours();
+
+    if(hour < 12){
+        return "Buenos días";
+    }
+
+    if(hour < 18){
+        return "Buenas tardes";
+    }
+
+    return "Buenas noches";
+
+}
+  
+  function speak(text){
 
     speechSynthesis.cancel();
 
@@ -461,7 +477,8 @@ if(SpeechRecognition){
         if(command.includes("hola jarvis")){
 
             speak(
-            "Buenas tardes Luis. Todos los sistemas se encuentran óptimos y plenamente funcionales."
+            getGreeting() +
+" Luis. Todos los sistemas se encuentran óptimos y plenamente funcionales."
             );
 
         }
