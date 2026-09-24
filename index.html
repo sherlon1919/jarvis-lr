@@ -721,6 +721,15 @@ setInterval(
 
     speechSynthesis.speak(utterance);
 
+utterance.onend = function(){
+
+    document.getElementById(
+        "systemStatus"
+    ).innerHTML =
+    "Estado: Operativo";
+
+};
+
     responseDiv.innerHTML = text;
 
   document.getElementById(
