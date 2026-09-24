@@ -582,30 +582,6 @@ Cerrar Panel
 
 </div>
 
-<h2>☁ Microsoft 365 Center</h2>
-
-<button class="action" onclick="hideAllPanels()">
-Cerrar Panel
-</button>
-
-<p><b>Exchange Online:</b> Operativo</p>
-
-<p><b>SharePoint:</b> Operativo</p>
-
-<p><b>OneDrive:</b> Operativo</p>
-
-<p><b>Microsoft Teams:</b> Operativo</p>
-
-<p><b>Power Platform:</b> Operativo</p>
-
-<p><b>Entra ID:</b> Operativo</p>
-
-<p><b>Estado General:</b> Todos los servicios disponibles.</p>
-
-</div>
-
-<div id="automationPanel" class="card" style="display:none;">
-
 <h2>⚙ Automation Center</h2>
 
 <button class="action" onclick="hideAllPanels()">
@@ -627,32 +603,6 @@ Cerrar Panel
 <p>☁ Aprovisionar OneDrive</p>
 
 </div>
-
-<h2>☁ Microsoft 365 Center</h2>
-
-<button class="action"
-onclick="hideAllPanels()">
-
-Cerrar Panel
-
-</button>
-
-<p><b>Exchange Online:</b> Operativo</p>
-
-<p><b>SharePoint:</b> Operativo</p>
-
-<p><b>OneDrive:</b> Operativo</p>
-
-<p><b>Microsoft Teams:</b> Operativo</p>
-
-<p><b>Power Platform:</b> Operativo</p>
-
-<p><b>Entra ID:</b> Operativo</p>
-
-<p><b>Estado General:</b> Todos los servicios disponibles.</p>
-
-</div>
-
 
 <script>
 
@@ -1010,16 +960,6 @@ else if(command.includes("estado general")){
 
     "Infraestructura, seguridad, Microsoft tres sesenta y cinco y comunicaciones operando con normalidad."
 
-    );
-
-}
-
-else if(command.includes("analista")){
-
-    openAnalystCenter();
-
-    speak(
-    "Analyst Center preparado."
     );
 
 }
