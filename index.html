@@ -300,7 +300,6 @@ Análisis finalizado.<br><br>
 Infraestructura, comunicaciones y servicios operando con normalidad.
 
 Estado general: sistemas operativos, servicios críticos y recursos tecnológicos funcionando dentro de parámetros normales.
-``
 
 </p>
 
@@ -337,3 +336,88 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 <button id="voiceButton">
 
 🎙 Activar JARVIS
+</button>
+
+<select id="voiceSelect">
+    <option>Cargando voces...</option>
+</select>
+
+<div id="response">
+    JARVIS en espera de comandos...
+</div>
+
+<script>
+
+let voices = [];
+
+const voiceButton = document.getElementById("voiceButton");
+const voiceSelect = document.getElementById("voiceSelect");
+const responseDiv = document.getElementById("response");
+
+function loadVoices() {
+
+    voices = speechSynthesis.getVoices();
+
+    voiceSelect.innerHTML = "";
+
+    voices.forEach((voice, index) => {
+
+        const option = document.createElement("option");
+
+        option.value = index;
+        option.textContent = voice.name + " - " + voice.lang;
+
+        voiceSelect.appendChild(option);
+
+    });
+
+}
+
+speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
+
+setTimeout(() => {
+
+    const femaleVoice = voices.findIndex(v =>
+        v.name.toLowerCase().includes("aria") ||
+        v.name.toLowerCase().includes("zira") ||
+        v.name.toLowerCase().includes("helena") ||
+        v.name.toLowerCase().includes("female")
+    );
+
+    if (femaleVoice >= 0) {
+        voiceSelect.value = femaleVoice;
+    }
+
+}, 1000);
+
+function speak(text){
+
+    speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    if(voices.length){
+        utterance.voice = voices[voiceSelect.value];
+    }
+
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+
+    responseDiv.innerHTML = text;
+
+}
+
+voiceButton.addEventListener("click", function(){
+
+    speak(
+        "Buenas tardes Luis. Todos los sistemas se encuentran óptimos y plenamente funcionales."
+    );
+
+});
+
+</script>
+</body>
+</html>
