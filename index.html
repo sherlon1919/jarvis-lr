@@ -378,15 +378,23 @@ loadVoices();
 
 setTimeout(() => {
 
-    const femaleVoice = voices.findIndex(v =>
-    v.name.includes("Sabina")
-);
+    if(!voices.length) return;
 
-    if (femaleVoice >= 0) {
-        voiceSelect.value = femaleVoice;
+    const sabinaVoice = voices.findIndex(v =>
+        v.name.toLowerCase().includes("sabina")
+    );
+
+    if(sabinaVoice >= 0){
+
+        voiceSelect.value = sabinaVoice;
+
+    }else{
+
+        voiceSelect.selectedIndex = 0;
+
     }
 
-}, 1000);
+}, 2000);
 
 function speak(text){
 
