@@ -315,8 +315,10 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 <div class="module">🔧 IT Operations</div>
 
-<div class="module">🔒 Security Center</div>
-
+<div class="module" onclick="openSecurityCenter()">
+🔒 Security Center
+</div>
+  
 <div class="module">☁ Microsoft 365</div>
 
 <div class="module">📊 Analyst Center</div>
@@ -344,6 +346,22 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 <div id="response">
     JARVIS en espera de comandos...
+</div>
+
+<div id="securityPanel" class="card" style="display:none;">
+
+<h2>🔒 Security Center</h2>
+
+<p><b>Nivel de Riesgo:</b> Bajo</p>
+
+<p><b>Firewall:</b> Operativo</p>
+
+<p><b>Antivirus:</b> Activo</p>
+
+<p><b>Microsoft Defender:</b> Sin alertas críticas</p>
+
+<p><b>Estado General:</b> Infraestructura segura</p>
+
 </div>
 
 <script>
@@ -385,6 +403,21 @@ function speak(text){
     if(voices.length){
         utterance.voice = voices[voiceSelect.value];
     }
+
+function openSecurityCenter(){
+
+    document.getElementById(
+        "securityPanel"
+    ).style.display = "block";
+
+    responseDiv.innerHTML =
+    "Security Center cargado.";
+
+    speak(
+    "Security Center cargado correctamente."
+    );
+
+}
 
     utterance.rate = 1;
     utterance.pitch = 1;
