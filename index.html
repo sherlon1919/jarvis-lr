@@ -729,6 +729,23 @@ setInterval(
     updatePrimeStatus,
     1000
 );
+
+    const lastModule = localStorage.getItem(
+    "lastModule"
+);
+
+if(lastModule){
+
+    const panel =
+    document.getElementById(lastModule);
+
+    if(panel){
+
+        panel.style.display = "block";
+
+    }
+
+}
   
   function speak(text){
 
@@ -767,6 +784,11 @@ function openResearchCenter(){
 
 hideAllPanels();
 
+    localStorage.setItem(
+    "lastModule",
+    "researchPanel"
+);
+    
     document.getElementById(
         "researchPanel"
     ).style.display = "block";
@@ -783,6 +805,11 @@ hideAllPanels();
 function openAnalystCenter(){
 
 hideAllPanels();
+
+    localStorage.setItem(
+    "lastModule",
+    "analystPanel"
+);
 
     document.getElementById(
         "analystPanel"
@@ -801,6 +828,11 @@ function openITOperations(){
 
 hideAllPanels();
 
+    localStorage.setItem(
+    "lastModule",
+    "itOperationsPanel"
+);
+
     document.getElementById(
         "itOperationsPanel"
     ).style.display = "block";
@@ -817,6 +849,11 @@ hideAllPanels();
 function openMicrosoft365Center(){
 
     hideAllPanels();
+
+    localStorage.setItem(
+    "lastModule",
+    "m365Panel"
+);
 
     document.getElementById(
         "m365Panel"
@@ -835,6 +872,11 @@ function openAutomationCenter(){
 
     hideAllPanels();
 
+    localStorage.setItem(
+    "lastModule",
+    "automationPanel"
+);
+
     document.getElementById(
         "automationPanel"
     ).style.display = "block";
@@ -852,6 +894,11 @@ function openSettingsCenter(){
 
     hideAllPanels();
 
+    localStorage.setItem(
+    "lastModule",
+    "settingsPanel"
+);
+
     document.getElementById(
         "settingsPanel"
     ).style.display = "block";
@@ -868,6 +915,7 @@ function openSettingsCenter(){
 const SpeechRecognition =
 window.SpeechRecognition ||
 window.webkitSpeechRecognition;
+let vigilanciaActiva = false;
 
 if(SpeechRecognition){
 
@@ -1167,6 +1215,11 @@ function hideAllPanels(){
 function openSecurityCenter(){
 
 hideAllPanels();
+
+    localStorage.setItem(
+    "lastModule",
+    "securityPanel"
+);
 
     document.getElementById("securityPanel").style.display = "block";
 
