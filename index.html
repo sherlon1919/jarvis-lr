@@ -388,6 +388,10 @@ onclick="openMicrosoft365Center()">
 ⚙ Automation Center
 </div>
 
+<div class="module" onclick="openSettingsCenter()">
+⚡ Settings Center
+</div>
+    
 </div>
 
 </div>
@@ -577,6 +581,28 @@ Cerrar Panel
 <p>📧 Crear Buzón Compartido</p>
 
 <p>☁ Aprovisionar OneDrive</p>
+
+</div>
+
+<div id="settingsPanel" class="card" style="display:none;">
+
+<h2>⚡ Settings Center</h2>
+
+<button class="action" onclick="hideAllPanels()">
+Cerrar Panel
+</button>
+
+<p><b>Voz:</b> Configurable</p>
+
+<p><b>Velocidad:</b> Normal</p>
+
+<p><b>Tono:</b> Normal</p>
+
+<p><b>Tema:</b> Cyberpunk</p>
+
+<p><b>Reconocimiento:</b> Activo</p>
+
+<p><b>Modo Escucha:</b> Manual</p>
 
 </div>
 
@@ -788,6 +814,23 @@ function openAutomationCenter(){
     );
 
 }
+
+function openSettingsCenter(){
+
+    hideAllPanels();
+
+    document.getElementById(
+        "settingsPanel"
+    ).style.display = "block";
+
+    responseDiv.innerHTML =
+    "Settings Center cargado.";
+
+    speak(
+    "Settings Center cargado correctamente."
+    );
+
+}
   
 const SpeechRecognition =
 window.SpeechRecognition ||
@@ -959,6 +1002,26 @@ else if(command.includes("operaciones")){
 
 }
 
+else if(command.includes("configuración")){
+
+    openSettingsCenter();
+
+    speak(
+    "Mostrando configuración del sistema."
+    );
+
+}
+
+else if(command.includes("ajustes")){
+
+    openSettingsCenter();
+
+    speak(
+    "Mostrando ajustes disponibles."
+    );
+
+}
+    
 else if(command.includes("estado general")){
 
     speak(
@@ -994,6 +1057,8 @@ function hideAllPanels(){
     document.getElementById("m365Panel").style.display = "none";
 
     document.getElementById("automationPanel").style.display = "none";
+
+    document.getElementById("settingsPanel").style.display = "none";
 
 }
     
