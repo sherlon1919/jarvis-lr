@@ -321,7 +321,9 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
   
 <div class="module">☁ Microsoft 365</div>
 
-<div class="module">📊 Analyst Center</div>
+<div class="module" onclick="openAnalystCenter()">
+📊 Analyst Center
+</div>
 
 <div class="module" onclick="openResearchCenter()">
 🔬 Research Center
@@ -386,6 +388,26 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 
 </div>
 
+<div id="analystPanel" class="card" style="display:none;">
+
+<h2>📊 Analyst Center</h2>
+
+<p><b>Hallazgos:</b></p>
+<p>Sin información disponible.</p>
+
+<p><b>Riesgos:</b></p>
+<p>Sin riesgos identificados.</p>
+
+<p><b>Impacto:</b></p>
+<p>No determinado.</p>
+
+<p><b>Próximos Pasos:</b></p>
+<p>Pendiente de análisis.</p>
+
+<p><b>Responsables:</b></p>
+<p>Por asignar.</p>
+
+</div>
 
 <script>
 
@@ -480,6 +502,21 @@ function openResearchCenter(){
 
     speak(
     "Research Center cargado correctamente."
+    );
+
+}
+
+function openAnalystCenter(){
+
+    document.getElementById(
+        "analystPanel"
+    ).style.display = "block";
+
+    responseDiv.innerHTML =
+    "Analyst Center cargado.";
+
+    speak(
+    "Analyst Center cargado correctamente."
     );
 
 }
@@ -618,6 +655,16 @@ else if(command.includes("investigar")){
 
     speak(
     "Research Center preparado para análisis."
+    );
+
+}
+
+else if(command.includes("analista")){
+
+    openAnalystCenter();
+
+    speak(
+    "Analyst Center preparado."
     );
 
 }
