@@ -376,26 +376,6 @@ function loadVoices() {
 speechSynthesis.onvoiceschanged = loadVoices;
 loadVoices();
 
-setTimeout(() => {
-
-    if(!voices.length) return;
-
-    const sabinaVoice = voices.findIndex(v =>
-        v.name.toLowerCase().includes("sabina")
-    );
-
-    if(sabinaVoice >= 0){
-
-        voiceSelect.value = sabinaVoice;
-
-    }else{
-
-        voiceSelect.selectedIndex = 0;
-
-    }
-
-}, 2000);
-
 function speak(text){
 
     speechSynthesis.cancel();
