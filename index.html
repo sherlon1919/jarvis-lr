@@ -890,11 +890,33 @@ getGreeting() +
 
         else if(command.includes("microsoft 365")){
 
-            speak(
-            "Microsoft tres sesenta y cinco se encuentra operativo."
-            );
+    openMicrosoft365Center();
 
-        }
+    speak(
+    "Microsoft 365 Center cargado."
+    );
+
+}
+
+        else if(command.includes("automatización")){
+
+    openAutomationCenter();
+
+    speak(
+    "Automation Center cargado."
+    );
+
+}  
+
+        else if(command.includes("settings")){
+
+    openSettingsCenter();
+
+    speak(
+    "Settings Center cargado."
+    );
+
+}
 
         else if(command.includes("teams")){
 
@@ -976,8 +998,55 @@ else if(command.includes("reporte")){
 
     openAnalystCenter();
 
+    document.getElementById(
+        "analystPanel"
+    ).innerHTML = `
+
+<h2>📊 Analyst Center</h2>
+
+<button class="action"
+onclick="hideAllPanels()">
+
+Cerrar Panel
+
+</button>
+
+<p><b>Hallazgos:</b></p>
+
+<ul>
+<li>Sistemas operativos.</li>
+<li>Servicios disponibles.</li>
+<li>Infraestructura estable.</li>
+</ul>
+
+<p><b>Riesgos:</b></p>
+
+<ul>
+<li>No se detectan incidentes críticos.</li>
+</ul>
+
+<p><b>Impacto:</b></p>
+
+<ul>
+<li>Operación normal.</li>
+</ul>
+
+<p><b>Próximos Pasos:</b></p>
+
+<ul>
+<li>Continuar monitoreo.</li>
+<li>Validar alertas.</li>
+<li>Revisar capacidad.</li>
+</ul>
+
+<p><b>Responsable:</b></p>
+
+<p>JARVIS-LR IT Operations</p>
+
+`;
+
     speak(
-    "Generando resumen ejecutivo."
+    "Resumen ejecutivo generado."
     );
 
 }
