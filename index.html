@@ -167,6 +167,24 @@ margin-top:15px;
 
 }
 
+#systemStatus{
+
+padding:10px;
+
+margin-top:10px;
+
+border:1px solid #00e5ff;
+
+border-radius:8px;
+
+background:#08111d;
+
+font-weight:bold;
+
+color:#00e5ff;
+
+}
+
 .assistant{
 
 display:flex;
@@ -279,6 +297,38 @@ Enterprise IT Assistant
 
 <div id="clock"></div>
 
+<div id="statusBar" class="card">
+
+    <div class="grid">
+
+        <div class="module">
+            🟢 Microsoft 365
+        </div>
+
+        <div class="module">
+            🟢 Entra ID
+        </div>
+
+        <div class="module">
+            🟢 Exchange
+        </div>
+
+        <div class="module">
+            🟢 Teams
+        </div>
+
+        <div class="module">
+            🟢 Security
+        </div>
+
+        <div class="module">
+            🟢 Research
+        </div>
+
+    </div>
+
+</div>
+
 </header>
 
 <div class="container">
@@ -349,7 +399,15 @@ Estado general: sistemas operativos, servicios críticos y recursos tecnológico
 </select>
 
 <div id="response">
+
     JARVIS en espera de comandos...
+
+</div>
+
+<div id="systemStatus">
+
+    Estado: Operativo
+
 </div>
 
 <div id="securityPanel" class="card" style="display:none;">
@@ -500,6 +558,11 @@ updateClock();
     speechSynthesis.speak(utterance);
 
     responseDiv.innerHTML = text;
+
+  document.getElementById(
+    "systemStatus"
+).innerHTML =
+"Estado: Ejecutando solicitud";
 
 }
 
@@ -687,6 +750,16 @@ else if(command.includes("reporte")){
 
     speak(
     "Generando resumen ejecutivo."
+    );
+
+}
+
+else if(command.includes("estado general")){
+
+    speak(
+
+    "Infraestructura, seguridad, Microsoft tres sesenta y cinco y comunicaciones operando con normalidad."
+
     );
 
 }
