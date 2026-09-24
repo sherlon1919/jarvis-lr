@@ -949,6 +949,20 @@ if(SpeechRecognition){
 getGreeting() +
 
 " Luis. Análisis completado. Todos los sistemas se encuentran óptimos y plenamente funcionales."
+
+    recognition.onend = function(){
+
+    if(vigilanciaActiva){
+
+        setTimeout(function(){
+
+            recognition.start();
+
+        },1000);
+
+    }
+
+};
             );
 
         }
@@ -1168,6 +1182,26 @@ else if(command.includes("ajustes")){
 
     speak(
     "Mostrando ajustes disponibles."
+    );
+
+}
+
+else if(command.includes("modo vigilancia")){
+
+    vigilanciaActiva = true;
+
+    speak(
+    "Modo vigilancia activado."
+    );
+
+}
+
+else if(command.includes("detener vigilancia")){
+
+    vigilanciaActiva = false;
+
+    speak(
+    "Modo vigilancia desactivado."
     );
 
 }
